@@ -1,4 +1,4 @@
-package com.server.somnium.domain.user.domain
+package com.server.somnium.domain.user.model
 
 import javax.persistence.*
 
@@ -16,7 +16,7 @@ class User (
 
     @Enumerated(EnumType.STRING) @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "role", joinColumns = @JoinColumn(name = "user_id"))
+    @CollectionTable(name = "role", joinColumns = [JoinColumn(name = "user_id")])
     val roles: List<Role>? = ArrayList()
 ) {
 
