@@ -29,8 +29,8 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew clean build
 
-      - name: Publish unit test results
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        if: ${{ always() }} # 테스트가 실패해도 항상 테스트 결과를 report함
-        with:
-          files: build/test-results/**/*.xml
+#      - name: Publish unit test results
+#        uses: EnricoMi/publish-unit-test-result-action@v1
+#        if: ${{ always() }} # 테스트가 실패해도 항상 테스트 결과를 report함
+#        with:
+#          files: build/test-results/**/*.xml
