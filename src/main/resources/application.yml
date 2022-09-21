@@ -3,7 +3,8 @@ server:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:somnium
+#    url: jdbc:h2:mem:somnium
+    url: jdbc:h2:tcp://localhost/~/somnium
     username: sa
     driver-class-name: org.h2.Driver
 
