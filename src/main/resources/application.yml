@@ -16,12 +16,12 @@ spring:
         web-allow-others: true
 
   jpa:
-    hibernate:
-      ddl-auto: create-drop
     properties:
       hibernate:
         show_sql: true
         format_sql: true
+        hbm2ddl:
+          auto: create
 
 logging.level:
     org.hibernate.sql: debug
