@@ -1,7 +1,6 @@
 package com.server.somnium.domain.somnium.model
 
 import com.server.somnium.domain.user.model.User
-import com.server.somnium.global.model.BaseTimeEntity
 import javax.persistence.*
 
 @Entity(name = "somnium")
@@ -24,6 +23,6 @@ class Somnium(
     @Column(name = "image_url", nullable = true, length = 500)
     val imageUrl: String
 
-): BaseTimeEntity() {
+) {
 
 }
