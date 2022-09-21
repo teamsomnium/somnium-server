@@ -1,4 +1,6 @@
 spring:
+  port: 8080
+
   datasource:
     url: jdbc:h2:tcp://localhost/~/somnium
     username: sa
