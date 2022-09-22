@@ -13,10 +13,10 @@ import javax.persistence.MappedSuperclass
 /**
  * data가 저장된 시점의 시간과 마지막으로 변경이 일어난 시간을 저장하고 관리하는 전역 entity
  */
-class BaseTimeEntity(
+class BaseTimeEntity {
     @CreatedDate @Column(updatable = false)
-    val createdDate: LocalDateTime = LocalDateTime.now(),
+    lateinit var createdDate: LocalDateTime
 
     @LastModifiedDate
-    val modifiedDate: LocalDateTime = LocalDateTime.now()
-)
+    lateinit var modifiedDate: LocalDateTime
+}
