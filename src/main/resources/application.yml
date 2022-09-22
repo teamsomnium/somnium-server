@@ -21,7 +21,7 @@ spring:
         show_sql: true
         format_sql: true
         hbm2ddl:
-          auto: create
+          auto: create-drop
 
 logging.level:
-    org.hibernate.sql: debug
+    org.hibernate.sql: trace
