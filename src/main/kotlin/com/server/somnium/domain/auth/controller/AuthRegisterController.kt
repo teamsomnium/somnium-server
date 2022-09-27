@@ -14,6 +14,6 @@ class AuthRegisterController {
         @RequestParam
         authorizeCode: String
     ) {
-
+        
     }
 }
