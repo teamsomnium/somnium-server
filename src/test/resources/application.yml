@@ -22,3 +22,10 @@ spring:
 
 logging.level:
   org.hibernate.sql: trace
+
+
+# *** Oauth Properties ***
+auth:
+  client-id: 57e01cbe60df93f665c4d938acdb7ace # REST KEY
+  redirect-uri: "http://localhost:8080/v1/oauth/register"
+  client-secret: X3nVTZazgJgN19hsdL6uJQEzv3D3nlEP
