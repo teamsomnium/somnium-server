@@ -1,4 +1,10 @@
 package com.server.somnium.domain.auth.dto
 
-class AuthUserInfo {
+data class AuthUserInfo(
+    val id: Long,
+    val properties: Properties
+) {
+    data class Properties(
+        val nickname: String
+    )
 }
