@@ -51,6 +51,9 @@ dependencies {
 
 	// *** Webflux ***
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
+
+	// *** Swagger UI ***
+	implementation("io.springfox:springfox-boot-starter:3.0.0")
 }
 
 tasks.withType<KotlinCompile> {
