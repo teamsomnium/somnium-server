@@ -34,7 +34,7 @@ class AuthRegisterService(
 
     private fun registerNewUser(authUserInfo: AuthUserInfo) {
         userRepository.save(User(
-                authId = authUserInfo.id,
+                authId = authUserInfo.id.toString(),
                 name = authUserInfo.properties.nickname,
                 roles = Collections.singletonList(Role.ROLE_USER)
         ))
