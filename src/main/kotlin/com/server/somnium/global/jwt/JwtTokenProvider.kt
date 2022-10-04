@@ -5,17 +5,21 @@ import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import java.nio.charset.StandardCharsets
 import java.security.Key
 import java.util.Date
 
-
 @Component
-class JwtTokenProvider{
+class JwtTokenProvider(
+    @Value("\${jwt.secret-key}")
+    private val secretKey: String
+) {
+
+    private val key: Key = Keys.hmacShaKeyFor(secretKey.toByteArray(StandardCharsets.UTF_8))
 
     companion object {
-        private val key: Key = Keys.hmacShaKeyFor("\${jwt.secret-key}".toByteArray(StandardCharsets.UTF_8))
         private const val ACCESS_TOKEN_EXPIRED_IN: Long = 1000L * 60 * 60 * 3
     }
 
