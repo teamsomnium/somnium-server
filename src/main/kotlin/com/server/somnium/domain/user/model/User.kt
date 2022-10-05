@@ -7,13 +7,13 @@ import org.springframework.security.core.userdetails.UserDetails
 import javax.persistence.*
 
 @Entity(name = "user")
-class User (
+class User(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     val id: Long? = null,
 
     @Column(name = "auth_id", nullable = false, unique = true)
-    val authId: String,
+    val authId: Long,
 
     @Column(name = "name", nullable = false)
     var name: String,
@@ -21,7 +21,7 @@ class User (
     @Enumerated(EnumType.STRING) @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "role", joinColumns = [JoinColumn(name = "user_id")])
-    val roles: MutableList<Role> = mutableListOf()
+        val roles: MutableList<Role> = mutableListOf()
 ): UserDetails {
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
@@ -31,7 +31,7 @@ class User (
 
     override fun getPassword() = ""
 
-    override fun getUsername() = authId
+    override fun getUsername() = authId.toString()
 
     override fun isAccountNonExpired() = true
 
