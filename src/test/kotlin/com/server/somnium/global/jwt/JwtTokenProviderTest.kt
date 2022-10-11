@@ -23,4 +23,22 @@ class JwtTokenProviderTest(
         Assertions.assertNotNull(accessToken)
     }
 
+    @Test
+    @DisplayName("token의 expired 여부가 잘 검증 되나요?")
+    fun validateTokenTest() {
+        //given
+        val accessToken = createAccessToken()
+
+        //when
+        val validateResult = jwtTokenProvider.validateToken(accessToken)
+
+        //then
+        Assertions.assertTrue(validateResult)
+
+    }
+
+    @DisplayName("Test를 위한 AccessToken 발급 메소드")
+    private fun createAccessToken(): String {
+        return jwtTokenProvider.createAccessToken("1234", Collections.singletonList(Role.ROLE_USER))
+    }
 }
