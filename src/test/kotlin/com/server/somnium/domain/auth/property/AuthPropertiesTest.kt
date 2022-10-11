@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 class AuthPropertiesTest(
-    @Autowired private val authProperties: AuthProperties
+    @Autowired val authProperties: AuthProperties
 ) {
 
     @Test
