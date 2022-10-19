@@ -24,7 +24,8 @@ noArg {
 }
 
 group = "com.server"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
+base.archivesBaseName = "somnium"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -145,4 +146,8 @@ val testCoverage by tasks.registering {
 
 	tasks["jacocoTestReport"].mustRunAfter(tasks["test"])
 	tasks["jacocoTestCoverageVerification"].mustRunAfter(tasks["jacocoTestReport"])
+}
+
+tasks.jar {
+	enabled = false
 }

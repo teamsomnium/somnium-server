@@ -6,7 +6,6 @@ on:
 
 jobs:
   CI:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -45,3 +44,19 @@ jobs:
         if: ${{ always() }} # 테스트가 실패해도 항상 테스트 결과를 report함
         with:
           files: build/test-results/**/*.xml
+
+      - name: Somnium Server CI Success Alarm
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ success() }}
+        with:
+          title: ✅ Somnium Server CI Success 💭
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          color: 00FF00
+
+      - name: Somnium Server CI Failure Alarm
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ failure() }}
+        with:
+          title: ❌ Somnium Server CI Failure 💭
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          color: FF0000
