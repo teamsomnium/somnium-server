@@ -55,14 +55,14 @@ class JwtTokenProvider(
         return tokenExpiration.after(Date())
     }
 
-    fun getToken(request: HttpServletRequest): String {
+    fun getToken(request: HttpServletRequest): String? {
         val token = request.getHeader("Authorization")
         if (token != null && token.startsWith("Bearer ")) {
             return token.substring(7)
         }
         return token
     }
-    private fun parseClaims(accessToken: String): Claims {
+    private fun parseClaims(accessToken: String?): Claims {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
