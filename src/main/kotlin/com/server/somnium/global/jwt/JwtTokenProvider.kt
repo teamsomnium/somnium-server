@@ -55,7 +55,7 @@ class JwtTokenProvider(
         return tokenExpiration.after(Date())
     }
 
-    fun getToken(request: HttpServletRequest): String {
+    fun getToken(request: HttpServletRequest): String? {
         val token = request.getHeader("Authorization")
         if (token != null && token.startsWith("Bearer ")) {
             return token.substring(7)
