@@ -22,24 +22,18 @@ class SecurityConfig(
 ) {
 
     @Bean
-    fun webSecurityCustomizer(): WebSecurityCustomizer {
-        return WebSecurityCustomizer {
-            it.ignoring()
-                    .antMatchers("/h2-console/**")
-                    .antMatchers("/swagger-ui/index.html")
-        }
-    }
-
-    @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         return http
-                .cors().and()
-                .csrf().and()
+                .cors().disable()
+                .csrf().disable()
                 .httpBasic().disable()
 
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
                 .authorizeHttpRequests {
+                    // HttpSecure Ignore Path
+                    it.antMatchers("/h2-console/**", "/swagger-ui/index.html").permitAll()
+
                     it.anyRequest().permitAll()
                 }
 
