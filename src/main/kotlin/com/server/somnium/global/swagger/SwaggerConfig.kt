@@ -28,8 +28,8 @@ class SwaggerConfig {
 
     private fun apiInfo(): ApiInfo? {
         return ApiInfoBuilder()
-                .title("financial_ledger")
-                .description("management financial ledger")
+                .title("somnium")
+                .description("management your somnium")
                 .version("1.0")
                 .build()
     }
