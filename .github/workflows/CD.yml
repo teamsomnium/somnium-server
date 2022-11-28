@@ -8,7 +8,7 @@ jobs:
   CD:
     runs-on: ubuntu-latest
 
-    step:
+    steps:
       - uses: actions/checkout@v3
 
       - name: Set up JDK 11
