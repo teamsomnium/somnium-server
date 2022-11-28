@@ -55,3 +55,19 @@ jobs:
 
       - name: Code Deploy
         run: aws deploy create-deployment --application-name somnium --deployment-config-name CodeDeployDefault.On eAtATime --deployment-group-name staging --s3-location bucket=somnium-bucket,bundleType=zip,key=somnium-bucket/jar/$GITHUB_SHA.zip
+
+      - name: Somnium Server CD Success Alarm
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ success() }}
+        with:
+          title: ✅ Somnium Server CD Success 💭
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          color: 00FF00
+
+      - name: Somnium Server CD Failure Alarm
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ failure() }}
+        with:
+          title: ❌ Somnium Server CD Failure 💭
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          color: FF0000
