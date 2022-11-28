@@ -2,8 +2,7 @@ name: Java CD with Amazon EC2, S3, Code Deploy
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master, develop ]
 
 jobs:
   CD:
