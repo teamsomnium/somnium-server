@@ -50,10 +50,10 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: Upload to S3
-        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://somnium-bucket/jar/$GITHUB_SHA.zip
+        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://somnium-bucket/$GITHUB_SHA.zip
 
       - name: Code Deploy
-        run: aws deploy create-deployment --application-name somnium --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name staging --s3-location bucket=somnium-bucket,bundleType=zip,key=somnium-bucket/jar/$GITHUB_SHA.zip
+        run: aws deploy create-deployment --application-name somnium-code-deploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name staging --s3-location bucket=somnium-bucket,bundleType=zip,key=somnium-bucket/$GITHUB_SHA.zip
 
       - name: Somnium Server CD Success Alarm
         uses: sarisia/actions-status-discord@v1
