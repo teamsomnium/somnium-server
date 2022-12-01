@@ -4,6 +4,7 @@ os: linux
 files:
   - source: /
     destination: /home/ec2-user/somnium-server
+    overwrite: yes
 
 permissions:
   - object: /home/ec2-user/somnium-server/
