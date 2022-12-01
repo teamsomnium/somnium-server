@@ -2,7 +2,7 @@ name: Java CD with Amazon EC2, S3, Code Deploy
 
 on:
   push:
-    branches: [ master, develop ]
+    branches: [ master, develop, feature/github-action-ci-cd ]
 
 jobs:
   CD:
