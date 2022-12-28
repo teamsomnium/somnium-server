@@ -1,6 +1,6 @@
 package com.server.somnium.domain.auth.controller
 
-import com.server.somnium.domain.auth.service.AuthRegisterService
+import com.server.somnium.domain.auth.service.AuthRegistrationService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/v1/oauth/register")
 class AuthController(
-    private val authRegisterService: AuthRegisterService
+    private val authRegistrationService: AuthRegistrationService
 ) {
 
     @GetMapping
@@ -17,6 +17,6 @@ class AuthController(
         @RequestParam
         code: String
     ) {
-        authRegisterService.register(code)
+        authRegistrationService.register(code)
     }
 }
