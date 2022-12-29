@@ -3,7 +3,7 @@ package com.server.somnium.domain.auth.service.facade.impl
 import com.server.somnium.domain.auth.dto.AuthTokenResponse
 import com.server.somnium.domain.auth.dto.AuthUserInfo
 import com.server.somnium.domain.auth.property.AuthProperties
-import com.server.somnium.domain.auth.service.facade.AuthRegisterFacade
+import com.server.somnium.domain.auth.service.facade.AuthRegistrationFacade
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Service
 import org.springframework.util.LinkedMultiValueMap
@@ -13,9 +13,9 @@ import java.nio.charset.StandardCharsets
 import java.util.*
 
 @Service
-class AuthRegisterFacadeImpl(
+class AuthRegistrationFacadeImpl(
     private val authProperties: AuthProperties
-): AuthRegisterFacade {
+): AuthRegistrationFacade {
 
     override fun getToken(code: String): AuthTokenResponse {
         return WebClient.create()

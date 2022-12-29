@@ -1,27 +1,32 @@
 package com.server.somnium.domain.auth.service
 
 import com.server.somnium.domain.auth.dto.AuthUserInfo
-import com.server.somnium.domain.auth.service.facade.AuthRegisterFacade
+import com.server.somnium.domain.auth.service.facade.AuthRegistrationFacade
 import com.server.somnium.domain.user.model.Role
 import com.server.somnium.domain.user.model.User
 import com.server.somnium.domain.user.repository.UserRepository
+import mu.KotlinLogging
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.util.*
 
+private val logger = KotlinLogging.logger {}
+
 @Service
-class AuthRegisterService(
+class AuthRegistrationService(
     private val userRepository: UserRepository,
-    private val authRegisterFacade: AuthRegisterFacade
+    private val authRegistrationFacade: AuthRegistrationFacade
 ) {
 
     @Transactional
     fun register(code: String) {
-        val token = authRegisterFacade.getToken(code)
-        val userInfo = authRegisterFacade.getUserInfo(token.access_token)
+        val token = authRegistrationFacade.getToken(code)
+        val userInfo = authRegistrationFacade.getUserInfo(token.access_token)
 
-        if (isNewUser(userInfo))
+        if (isNewUser(userInfo)) {
             registerNewUser(userInfo)
+            logger.info { "New user has registration. user id = ${userInfo.id}" }
+        }
         else
             updateUserInfo(userInfo)
     }
