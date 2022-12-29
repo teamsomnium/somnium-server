@@ -23,8 +23,10 @@ class AuthRegistrationService(
         val token = authRegistrationFacade.getToken(code)
         val userInfo = authRegistrationFacade.getUserInfo(token.access_token)
 
-        if (isNewUser(userInfo))
+        if (isNewUser(userInfo)) {
             registerNewUser(userInfo)
+            logger.info { "New user has registration. user id = ${userInfo.id}" }
+        }
         else
             updateUserInfo(userInfo)
     }
